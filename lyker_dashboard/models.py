@@ -33,3 +33,6 @@ class UserAction(models.Model):
     type = models.IntegerField(default=0)
     object = models.ForeignKey(Object)
     user = models.ForeignKey(User)
+    image_filename = models.CharField(max_length=200, default = "/userdata/no_user/blank.png");
+    def __unicode__(self):
+        return self.user.name + " " + str(self.type) + " \'" + self.object.object_name + "\' " + self.image_filename
