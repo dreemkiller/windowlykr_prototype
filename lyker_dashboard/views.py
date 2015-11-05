@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
-from django.template import RequestContext, loader
+#from django.template import RequestContext, loader
 
 from .models import User, Object, Customer, Video
 
 def index(request):
     user_list = User.objects.order_by('user_id')
-    template = loader.get_template('lyker_dashboard/index.html')
-    context = RequestContext(request, {'user_list': user_list,})
-    return HttpResponse(template.render(context))
+    #template = loader.get_template('lyker_dashboard/index.html')
+    context = {'user_list': user_list,}
+    return render(request, 'lyker_dashboard/index.html', context)
 def user(request, user_id):
     try:
         this_user = User.objects.get(user_id = user_id)
