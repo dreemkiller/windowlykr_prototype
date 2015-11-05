@@ -6,8 +6,13 @@ from .models import User, Object, Customer, Video
 
 def index(request):
     user_list = User.objects.order_by('user_id')
-    #template = loader.get_template('lyker_dashboard/index.html')
-    context = {'user_list': user_list,}
+    customer_list = Customer.objects.order_by('customer_id')
+    video_list = Video.objects.order_by('video_id')
+    object_list = Object.objects.order_by('object_id')
+    context = {'user_list': user_list,
+               'customer_list':customer_list,
+               'video_list':video_list,
+               'object_list':object_list}
     return render(request, 'lyker_dashboard/index.html', context)
 def user(request, user_id):
     this_user = get_object_or_404(User, pk=user_id)

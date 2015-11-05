@@ -1,3 +1,4 @@
+    <h1>Users</h1>
 {% if user_list %}
     <ul>
     {% for user in user_list %}
@@ -6,4 +7,34 @@
     </ul>
 {% else %}
     <p>No users found.</p>
+{% endif %}
+    <h1>Customers</h1>
+{% if customer_list %}
+    <ul>
+    {% for customer in customer_list %}
+        <li><a href='customer/{{ customer.id }}/'> {{ customer.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No customers found.</p>
+{% endif %}
+    <h1>Videos</h1>
+{% if video_list %}
+    <ul>
+    {% for video in video_list %}
+        <li><a href='video/{{ video.id }}/'> {{ video.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No videos found.</p>
+{% endif %}
+    <h1>Objects</h1>
+{% if object_list %}
+    <ul>
+    {% for object in object_list %}
+        <li><a href='object/{{ object.id }}/'> {{ object.object_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No objects found.</p>
 {% endif %}
