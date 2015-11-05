@@ -2,7 +2,7 @@
 {% if user_list %}
     <ul>
     {% for user in user_list %}
-        <li><a href="user/{{ user.id }}/"> {{ user.name }}</a></li>
+        <li><a href="{% url 'user' user.id %}"> {{ user.name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
@@ -12,7 +12,7 @@
 {% if customer_list %}
     <ul>
     {% for customer in customer_list %}
-        <li><a href='customer/{{ customer.id }}/'> {{ customer.name }}</a></li>
+        <li><a href="{% url 'customer' customer.id %}"> {{ customer.name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
@@ -22,7 +22,7 @@
 {% if video_list %}
     <ul>
     {% for video in video_list %}
-        <li><a href='video/{{ video.id }}/'> {{ video.name }}</a></li>
+        <li><a href="{% url 'video' video.id %}"> {{ video.name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
@@ -32,7 +32,7 @@
 {% if object_list %}
     <ul>
     {% for object in object_list %}
-        <li><a href='object/{{ object.id }}/'> {{ object.object_name }}</a></li>
+        <li><a href="{% url 'object' object.id %}"> {{ object.object_name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
