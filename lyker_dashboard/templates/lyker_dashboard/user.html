@@ -1,1 +1,18 @@
 {{ this_user }}
+<h1> Actions</h1>
+{% if useraction_list %}
+    <ul>
+    {% for useraction in useraction_list %}
+        <li>type: {{useraction.type}}, object: {{useraction.object}} user:{{useraction.user}}</li>
+    {% endfor %}
+{% else %}
+    <p>No Actions found</p>
+{% endif %}
+<h1> Add Action</h1>
+<form action="{% url 'useraction' %}" method="post"> 
+{% csrf_token %}
+    <p><label>Object Name:</label><input type=textfield name="object"/>
+    <p><label>Type:</label><input type=textfield name="type" input type=number/>
+    <p><label>Image Path:</label><input type=textfield name="image_path"/>
+    <p><input type="submit" value="Create!">
+</form>
