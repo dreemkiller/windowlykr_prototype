@@ -23,6 +23,7 @@ def user(request, user_id):
                   {'this_user':this_user,
                    'useraction_list':useraction_list,
                    'object_list':object_list,
+                   'user_id':user_id,
                   })
 
 def object(request, object_id):
@@ -41,10 +42,11 @@ def useraction(request):
     object_id = request.POST['object']
     action_type = request.POST['type']
     image_path = request.POST['image_path']
-    #user_id = request.POST['user_id']
+    user_id = request.POST['user_id']
     return render(request, 'lyker_dashboard/useraction.html',
                            {'object_id':object_id,
                             'action_type':action_type,
-                            'image_path':image_path})
+                            'image_path':image_path,
+                            'user_id':user_id})
 
 # Create your views here.
