@@ -17,8 +17,13 @@ def index(request):
 def user(request, user_id):
     this_user = get_object_or_404(User, pk=user_id)
     useraction_list = UserAction.objects.filter(user=this_user)
+    object_list = Object.objects.order_by('object_id')
     print("useraction_list:" + str(useraction_list))
-    return render(request, 'lyker_dashboard/user.html', {'this_user':this_user, 'useraction_list':useraction_list})
+    return render(request, 'lyker_dashboard/user.html',
+                  {'this_user':this_user,
+                   'useraction_list':useraction_list,
+                   'object_list':object_list,
+                  })
 
 def object(request, object_id):
     this_object = get_object_or_404(Object, pk=object_id)
@@ -33,6 +38,13 @@ def video(request, video_id):
     return render(request, 'lyker_dashboard/video.html', {'this_video':this_video})
 
 def useraction(request):
-    return render(request, 'lyker_dashboard/useraction.html')
+    object_id = request.POST['object']
+    action_type = request.POST['type']
+    image_path = request.POST['image_path']
+    #user_id = request.POST['user_id']
+    return render(request, 'lyker_dashboard/useraction.html',
+                           {'object_id':object_id,
+                            'action_type':action_type,
+                            'image_path':image_path})
 
 # Create your views here.
